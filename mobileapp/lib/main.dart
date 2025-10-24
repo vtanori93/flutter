@@ -1,5 +1,34 @@
 import 'package:flutter/material.dart';
 
+// Basic & Box Containers
+import 'containers/container_example.dart';
+import 'containers/decorated_box_example.dart';
+import 'containers/padding_example.dart';
+import 'containers/align_example.dart';
+import 'containers/center_example.dart';
+import 'containers/sizedbox_example.dart';
+import 'containers/constrained_box_example.dart';
+import 'containers/expanded_example.dart';
+import 'containers/flexible_example.dart';
+import 'containers/fractionally_sized_box_example.dart';
+import 'containers/aspect_ratio_example.dart';
+import 'containers/limited_box_example.dart';
+import 'containers/fitted_box_example.dart';
+
+// Flex & Multi-Child Layouts
+import 'containers/spacer_example.dart';
+import 'containers/wrap_example.dart';
+import 'containers/indexed_stack_example.dart';
+import 'containers/pageview_example.dart';
+import 'containers/transform_example.dart';
+import 'containers/custom_scrollview_example.dart';
+import 'containers/stack_example.dart';
+import 'containers/gridview_example.dart';
+import 'containers/scrollview_example.dart';
+import 'containers/listview_example.dart';
+import 'containers/column_example.dart';
+import 'containers/row_example.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -7,116 +36,73 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
-        // try changing the seedColor in the colorScheme below to Colors.green
-        // and then invoke "hot reload" (save your changes or press the "hot
-        // reload" button in a Flutter-supported IDE, or press "r" if you used
-        // the command line to start the app).
-        //
-        // Notice that the counter didn't reset back to zero; the application
-        // state is not lost during the reload. To reset the state, use hot
-        // restart instead.
-        //
-        // This works for code too, not just values: Most code changes can be
-        // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Containers Demo',
+      theme: ThemeData(primarySwatch: Colors.blue),
+      home: const Selector(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
+class Selector extends StatelessWidget {
+  const Selector({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
+    final data = [
+      // Basic containers
+      {'title': 'Container', 'widget': const ContainerExample()},
+      {'title': 'DecoratedBox', 'widget': const DecoratedBoxExample()},
+      {'title': 'Padding', 'widget': const PaddingExample()},
+      {'title': 'Align', 'widget': const AlignExample()},
+      {'title': 'Center', 'widget': const CenterExample()},
+      {'title': 'SizedBox', 'widget': const SizedBoxExample()},
+      {'title': 'ConstrainedBox', 'widget': const ConstrainedBoxExample()},
+      {'title': 'Expanded', 'widget': const ExpandedExample()},
+      {'title': 'Flexible', 'widget': const FlexibleExample()},
+      {'title': 'FractionallySizedBox', 'widget': const FractionallySizedBoxExample()},
+      {'title': 'AspectRatio', 'widget': const AspectRatioExample()},
+      {'title': 'LimitedBox', 'widget': const LimitedBoxExample()},
+      {'title': 'FittedBox', 'widget': const FittedBoxExample()},
+
+      // Flex and layout containers
+      {'title': 'Spacer', 'widget': const SpacerExample()},
+      {'title': 'Wrap', 'widget': const WrapExample()},
+      {'title': 'IndexedStack', 'widget': const IndexedStackExample()},
+      {'title': 'PageView', 'widget': const PageViewExample()},
+      {'title': 'Transform', 'widget': const TransformExample()},
+      {'title': 'CustomScrollView', 'widget': const CustomScrollViewExample()},
+
+      // Additional multi-child layouts
+      {'title': 'Stack', 'widget': const StackExample()},
+      {'title': 'GridView', 'widget': const GridViewExample()},
+      {'title': 'SingleChildScrollView', 'widget': const ScrollViewExample()},
+      {'title': 'ListView', 'widget': const ListViewExample()},
+      {'title': 'Column', 'widget': const ColumnExample()},
+      {'title': 'Row', 'widget': const RowExample()},
+    ];
+
     return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
+      appBar: AppBar(title: const Text('Flutter Layout & Container Examples')),
+      body: ListView.builder(
+        itemCount: data.length,
+        itemBuilder: (context, index) {
+          final item = data[index];
+          return ListTile(
+            title: Text(item['title'] as String),
+            trailing: const Icon(Icons.arrow_forward_ios),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (_) => item['widget'] as Widget),
+              );
+            },
+          );
+        },
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
