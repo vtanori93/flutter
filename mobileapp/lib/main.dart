@@ -29,6 +29,12 @@ import 'containers/listview_example.dart';
 import 'containers/column_example.dart';
 import 'containers/row_example.dart';
 
+//Variables
+import 'containers/variables_example.dart';
+
+import 'containers/all_widgets_full_example.dart';
+
+
 void main() {
   runApp(const MyApp());
 }
@@ -83,6 +89,14 @@ class Selector extends StatelessWidget {
       {'title': 'ListView', 'widget': const ListViewExample()},
       {'title': 'Column', 'widget': const ColumnExample()},
       {'title': 'Row', 'widget': const RowExample()},
+
+      //Variables
+      {'title': 'Variables Example', 'widget': const VariablesExample()},
+
+      //AllWidgets
+      {'title': 'All Widgets FULL Example', 'widget': const AllWidgetsFullExample()},
+
+
     ];
 
     return Scaffold(
